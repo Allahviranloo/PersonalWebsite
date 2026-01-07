@@ -1,42 +1,212 @@
-#root {
-  max-width: 1280px;
+:root {
+  --bg-gradient: linear-gradient(135deg, #0f172a 0%, #000000 100%);
+  --card-bg: rgba(30, 41, 59, 0.7);
+  --accent: #38bdf8;
+  --text-main: #f8fafc;
+  --text-dim: #94a3b8;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --transition: all 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  line-height: 1.6;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.portfolio {
+  width: 100%;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.section {
+  width: 100%;
+  margin-bottom: 80px;
+  animation: fadeIn 0.8s ease-out;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.hero {
+  text-align: center;
+  padding: 60px 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.profile-container {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 4px solid var(--accent);
+  padding: 5px;
+  margin-bottom: 25px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.profile-pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: 0px;
 }
 
-.card {
-  padding: 2em;
+.hero h1 {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  margin: 0;
+  color: var(--text-main);
+  font-weight: 800;
+  letter-spacing: -1px;
 }
 
-.read-the-docs {
-  color: #888;
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  display: inline-block; 
+  border-bottom: 3px solid var(--accent);
+  padding-bottom: 10px;
+}
+
+.content-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  padding: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  width: 100%;
+  text-align: left; 
+}
+
+.project-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(56, 189, 248, 0.2);
+  border-color: var(--accent);
+}
+
+.project-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.task-manager-logo {
+  height: 200px;
+  object-fit: contain; 
+  margin-top: 20px;   
+}
+
+.project-img-placeholder {
+  width: 100%;
+  height: 250px;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.project-info {
+  padding: 24px;
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 24px;
+  background: var(--accent);
+  border-radius: 12px;
+  color: #0f172a;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: var(--transition);
+  align-self: center;
+}
+
+.btn:hover {
+  background: white;
+  transform: scale(1.05);
+}
+
+.social-links {
+  display: flex;
+  gap: 40px;
+  justify-content: center; 
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.social-links a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.social-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.social-links a:hover {
+  color: var(--accent);
+  transform: translateY(-3px);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
