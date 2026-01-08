@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import rambleImg from './ramble_logo.jpg';
 import taskImg from './taskmanagerlogo.png';
 import profileImg from './IMG_3509.jpeg'; 
 
 function App() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   const projects = [
     {
       title: "Ramble",
@@ -23,14 +25,18 @@ function App() {
       description: "A sleek productivity app that helps users organize their daily tasks with real-time updates.",
       link: "https://github.com/Allahviranloo/Task-Manager.git",
       image: taskImg
-    },
-    {
-      title: "Personal Website",
-      description: "My digital home base! Built using a React frontend and a Node.js backend.",
-      link: "#",
-      image: null
     }
   ];
+
+  const nextProject = () => {
+    setCurrentIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
+  };
+
+  const prevProject = () => {
+    setCurrentIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
+  };
+
+  const project = projects[currentIndex];
 
   return (
     <div className="portfolio">
@@ -55,25 +61,37 @@ function App() {
 
       <section className="section projects">
         <h2>My Work</h2>
-        <div className="project-grid">
-          {projects.map((project, index) => (
-            <div key={index} className="project-card">
-              {project.image ? (
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
-                  className={`project-img ${project.title === "React Task Manager" ? "task-manager-logo" : ""}`} 
-                />
-              ) : (
-                <div className="project-img-placeholder">Code Only Project</div>
-              )}
-              
-              <div className="project-info">
-                <h3>{project.title}</h3>
-                <p>{project.description}</p>
-                <a href={project.link} target="_blank" rel="noopener noreferrer" className="btn">View Source</a>
-              </div>
+        <div className="slider-container">
+          <button className="nav-btn prev" onClick={prevProject}>&lt;</button>
+          
+          <div className="project-card active-slide" key={currentIndex}>
+            {project.image ? (
+              <img 
+                src={project.image} 
+                alt={project.title} 
+                className={`project-img ${project.title === "React Task Manager" ? "task-manager-logo" : ""}`} 
+              />
+            ) : (
+              <div className="project-img-placeholder">Code Only Project</div>
+            )}
+            
+            <div className="project-info">
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+              <a href={project.link} target="_blank" rel="noopener noreferrer" className="btn">View Source</a>
             </div>
+          </div>
+
+          <button className="nav-btn next" onClick={nextProject}>&gt;</button>
+        </div>
+        
+        <div className="dot-container">
+          {projects.map((_, index) => (
+            <span 
+              key={index} 
+              className={`dot ${index === currentIndex ? 'active' : ''}`}
+              onClick={() => setCurrentIndex(index)}
+            ></span>
           ))}
         </div>
       </section>
