@@ -52,9 +52,13 @@ function App() {
         <div className="content-card">
           <h2>About Me</h2>
           <p>
-            I'm a developer focused on building clean, efficient applications
-            that bridge the gap between complex backend logic and user-friendly frontends.
-            I'm aspiring to be a cybersecurity professional, working as a cybersecurity engineer.
+            I’m a Computer Science student at the University of New Brunswick with experience building full-stack applications using technologies like React, Node.js, PostgreSQL, and Docker, as well as working with cloud and serverless systems on Microsoft Azure.
+          </p>
+          <p>
+            Through academic and personal projects, I’ve developed RESTful APIs, designed relational databases, and implemented secure authentication and backend services. I have a strong interest in cybersecurity and aspire to work in the field, particularly in areas related to secure system design, backend security, and infrastructure.
+            </p>
+          <p>
+            I enjoy solving complex problems, learning new technologies, and building reliable software that balances functionality, performance, and security.
           </p>
         </div>
       </section>
